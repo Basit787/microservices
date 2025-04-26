@@ -18,12 +18,6 @@ docker compose up
 
 3. After select below command and add in different terminal to start microservices and to interact with each other using rabbit mq
 
-- Main service
-
-```bash
-cd src && cd main && npm i && npm start
-```
-
 - User service
 
 ```bash
@@ -36,11 +30,17 @@ cd src && cd user-service && npm i && npm start
 cd src && cd product-service && npm i && npm start
 ```
 
+- Main service
+
+```bash
+cd src && cd main && npm i && npm start
+```
+
 ---
 
 ## Postman
 
-### Select schema from ```./postman/microservices.postman_collection.json``` and add it in postman
+### Select schema from `./postman/microservices.postman_collection.json` and add it in postman
 
 ### OR
 
