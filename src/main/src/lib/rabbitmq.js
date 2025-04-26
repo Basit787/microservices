@@ -1,11 +1,14 @@
 import amqp from "amqplib";
+import "dotenv/config";
 
 let connection;
 let channel;
 
+const url = process.env.RABBIT_MQ_URL;
+
 export const ConnectionRabbitMq = async () => {
   try {
-    connection = await amqp.connect("amqp://localhost");
+    connection = await amqp.connect(url);
     channel = await connection.createChannel();
     console.log("Rabbit-mq connection established");
   } catch (error) {
