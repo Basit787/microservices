@@ -40,6 +40,10 @@ cd src && cd product-service && npm i && npm start
 
 ## Postman
 
+### Select schema from ```./postman/microservices.postman_collection.json``` and add it in postman
+
+### OR
+
 ### Users
 
 - Add below as postman url
