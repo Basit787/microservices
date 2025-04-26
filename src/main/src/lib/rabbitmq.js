@@ -12,6 +12,7 @@ export const ConnectionRabbitMq = async () => {
     channel = await connection.createChannel();
     console.log("Rabbit-mq connection established");
   } catch (error) {
+    console.log(error);
     throw new Error("Failed to connect rabbit mq");
   }
 };
@@ -27,6 +28,7 @@ export const ChannelConsume = async (queue, callback) => {
       }
     });
   } catch (error) {
+    console.log(error);
     throw new Error("Failed to get channel consume in rabbit mq");
   }
 };
