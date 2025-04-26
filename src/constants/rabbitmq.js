@@ -43,7 +43,7 @@ const channelConsume = async (queue) => {
     const channel = await connection.createChannel();
     return await channel.consume(queue, (msg) => {
       const data = JSON.parse(msg.content.toString());
-      console.log(`Queue : ${queue}, Data = ${JSON.stringify(data)}`);
+      console.log(queue, data);
       channel.ack(msg);
     });
   } catch (error) {
