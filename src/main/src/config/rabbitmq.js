@@ -1,9 +1,16 @@
-import { channelConsume } from "../lib/rabbitmq.js";
+import { ChannelConsume, ConnectionRabbitMq } from "../lib/rabbitmq.js";
 
 const connectRabbitMq = async () => {
   try {
-    await channelConsume("USER_QUEUE");
-    await channelConsume("PRODUCT_QUEUE");
+    await ConnectionRabbitMq();
+
+    await ChannelConsume("USER_QUEUE", (data) => {
+      console.log(data);
+    });
+
+    await ChannelConsume("PRODUCT_QUEUE", (data) => {
+      console.log(data);
+    });
   } catch (error) {
     console.error("Failed to connect API-Gateway", error);
   }

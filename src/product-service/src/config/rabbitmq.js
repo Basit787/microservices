@@ -1,9 +1,9 @@
-import { channelQueue } from "../lib/rabbitmq.js";
+import { AssertQueue, ConnectionRabbitMq } from "../lib/rabbitmq.js";
 
 const connectRabbitmq = async () => {
   try {
-    await channelQueue("PRODUCT_QUEUE");
-    console.log("Product-Service connected to RabbitMQ");
+    await ConnectionRabbitMq();
+    await AssertQueue("PRODUCT_QUEUE");
   } catch (error) {
     console.error("Failed to connect Product-Service", error);
   }

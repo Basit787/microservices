@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "07963122-85a0-43c1-a9b5-c5abb094aa2f",
+		"_postman_id": "3f006ae5-3868-4a22-a518-bc591b4891e3",
 		"name": "microservices",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "31909695"
@@ -21,13 +21,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:4000/register",
+					"raw": "http://localhost:4000/users/register",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "4000",
 					"path": [
+						"users",
 						"register"
 					]
 				}
@@ -49,13 +50,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/product",
+					"raw": "http://localhost:5000/api/product",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "5000",
 					"path": [
+						"api",
 						"product"
 					]
 				}
