@@ -1,7 +1,7 @@
-const express = require("express");
-const { sendQueue } = require("../../constants/rabbitmq");
-const connectRabbitmq = require("./config/rabbitmq");
-require("dotenv/config");
+import express from "express";
+import connectRabbitmq from "./config/rabbitmq.js";
+import { sendQueue } from "./lib/rabbitmq.js";
+import "dotenv/config";
 
 const app = express();
 app.use(express.json());

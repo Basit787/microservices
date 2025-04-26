@@ -1,6 +1,6 @@
-const amqp = require("amqplib");
+import amqp from "amqplib";
 
-const connection = async () => {
+export const connection = async () => {
   try {
     return await amqp.connect("amqp://localhost");
   } catch (error) {
@@ -8,7 +8,7 @@ const connection = async () => {
   }
 };
 
-const channel = async () => {
+export const channel = async () => {
   try {
     const connection = await amqp.connect("amqp://localhost");
     return await connection.createChannel();
@@ -17,7 +17,7 @@ const channel = async () => {
   }
 };
 
-const channelQueue = async (queue) => {
+export const channelQueue = async (queue) => {
   try {
     const connection = await amqp.connect("amqp://localhost");
     const channel = await connection.createChannel();
@@ -27,7 +27,7 @@ const channelQueue = async (queue) => {
   }
 };
 
-const sendQueue = async (queue, payload) => {
+export const sendQueue = async (queue, payload) => {
   try {
     const connection = await amqp.connect("amqp://localhost");
     const channel = await connection.createChannel();
@@ -37,7 +37,7 @@ const sendQueue = async (queue, payload) => {
   }
 };
 
-const channelConsume = async (queue) => {
+export const channelConsume = async (queue) => {
   try {
     const connection = await amqp.connect("amqp://localhost");
     const channel = await connection.createChannel();
@@ -49,12 +49,4 @@ const channelConsume = async (queue) => {
   } catch (error) {
     throw new Error("Failed to get channel consume in rabbit mq");
   }
-};
-
-module.exports = {
-  connection,
-  channel,
-  channelQueue,
-  sendQueue,
-  channelConsume,
 };

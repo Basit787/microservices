@@ -1,4 +1,4 @@
-const { channelConsume } = require("../../../constants/rabbitmq");
+import { channelConsume } from "../lib/rabbitmq.js";
 
 const connectRabbitMq = async () => {
   try {
@@ -9,4 +9,4 @@ const connectRabbitMq = async () => {
   }
 };
 
-module.exports = connectRabbitMq;
+export default connectRabbitMq;
