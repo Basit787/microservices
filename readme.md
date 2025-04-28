@@ -21,20 +21,22 @@ docker compose up
 - User service
 
 ```bash
-cd src && cd user-service && npm i && npm start
+cd services && cd user-service && npm start
 ```
 
 - Product service
 
 ```bash
-cd src && cd product-service && npm i && npm start
+cd services && cd product-service && npm start
 ```
 
 - Main service
 
 ```bash
-cd src && cd main && npm i && npm start
+cd services && cd main && npm start
 ```
+
+- ```Note:-``` If you are setting up app for first time note that install dependencies using ```npm i``` in each service then start server
 
 ---
 
