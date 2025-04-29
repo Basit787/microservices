@@ -7,7 +7,7 @@ const url = process.env.RABBIT_MQ_URL as string;
 
 export const ConnectionRabbitMq = async () => {
   try {
-    let connection = await amqp.connect(url);
+    const connection = await amqp.connect(url);
     channel = await connection.createChannel();
     console.log("Rabbit-mq connection established");
   } catch (error) {
@@ -26,7 +26,7 @@ export const AssertQueue = async (queue: string) => {
   }
 };
 
-export const SendQueue = async (queue: string, payload: Object) => {
+export const SendQueue = async (queue: string, payload: object) => {
   try {
     if (!channel) throw new Error("Channel is not established");
     return channel.sendToQueue(queue, Buffer.from(JSON.stringify(payload)));

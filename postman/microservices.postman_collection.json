@@ -7,13 +7,82 @@
   },
   "item": [
     {
-      "name": "User-Service",
+      "name": "user-service",
+      "item": [
+        {
+          "name": "getAllUsers",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:4000/users/user/getAllUsers",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "4000",
+              "path": ["users", "user", "getAllUsers"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getCurrentUser",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "product-service",
+      "item": [
+        {
+          "name": "Product-Service",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product\": \"Product 1\",\n  \"price\": \"$200\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/product",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "product"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "login",
       "request": {
         "method": "POST",
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"name\": \"User\",\n  \"email\": \"user@gmail.com\"\n}",
+          "raw": "{\n    \"email\": \"user1@gmail.com\",\n    \"password\":\"12345678\"\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -21,23 +90,23 @@
           }
         },
         "url": {
-          "raw": "http://localhost:4000/users/register",
+          "raw": "http://localhost:4000/users/auth/login",
           "protocol": "http",
           "host": ["localhost"],
           "port": "4000",
-          "path": ["users", "register"]
+          "path": ["users", "auth", "login"]
         }
       },
       "response": []
     },
     {
-      "name": "Product-Service",
+      "name": "registerUser",
       "request": {
         "method": "POST",
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"product\": \"Product 1\",\n  \"price\": \"$200\"\n}",
+          "raw": "{\n    \"name\": \"User 1\",\n    \"age\": 22,\n    \"email\": \"user1@gmail.com\"\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -45,11 +114,26 @@
           }
         },
         "url": {
-          "raw": "http://localhost:5000/api/product",
+          "raw": "http://localhost:4000/users/auth/register",
           "protocol": "http",
           "host": ["localhost"],
-          "port": "5000",
-          "path": ["api", "product"]
+          "port": "4000",
+          "path": ["users", "auth", "register"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "logout",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/users/auth/logout",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["users", "auth", "logout"]
         }
       },
       "response": []
