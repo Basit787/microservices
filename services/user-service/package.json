@@ -12,13 +12,19 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "lint": "npx eslint .",
-    "format": "npx prettier . --check --write"
+    "format": "npx prettier . --check --write",
+    "mig:gen": "npx drizzle-kit generate",
+    "mig:run": "npx drizzle-kit migrate",
+    "studio": "npx drizzle-kit studio"
   },
   "dependencies": {
     "amqplib": "^0.10.7",
     "dotenv": "^16.5.0",
+    "drizzle-orm": "^0.43.1",
     "express": "^5.1.0",
     "nodemon": "^3.1.10",
+    "pg": "^8.15.6",
+    "postgres": "^3.4.5",
     "ts-node": "^10.9.2"
   },
   "devDependencies": {
@@ -26,9 +32,12 @@
     "@types/amqplib": "^0.10.7",
     "@types/express": "^5.0.1",
     "@types/node": "^22.15.3",
+    "@types/pg": "^8.11.14",
+    "drizzle-kit": "^0.31.0",
     "eslint": "^9.25.1",
     "globals": "^16.0.0",
     "prettier": "3.5.3",
+    "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.31.0"
   }
