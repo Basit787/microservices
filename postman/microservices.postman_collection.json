@@ -76,67 +76,72 @@
       ]
     },
     {
-      "name": "login",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n    \"email\": \"user1@gmail.com\",\n    \"password\":\"12345678\"\n}",
-          "options": {
-            "raw": {
-              "language": "json"
+      "name": "auth",
+      "item": [
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"user1@gmail.com\",\n    \"password\":\"12345678\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:4000/users/auth/login",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "4000",
+              "path": ["users", "auth", "login"]
             }
-          }
+          },
+          "response": []
         },
-        "url": {
-          "raw": "http://localhost:4000/users/auth/login",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "4000",
-          "path": ["users", "auth", "login"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "registerUser",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n    \"name\": \"User 1\",\n    \"age\": 22,\n    \"email\": \"user1@gmail.com\"\n}",
-          "options": {
-            "raw": {
-              "language": "json"
+        {
+          "name": "registerUser",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"User 1\",\n    \"age\": 22,\n    \"email\": \"user1@gmail.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:4000/users/auth/register",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "4000",
+              "path": ["users", "auth", "register"]
             }
-          }
+          },
+          "response": []
         },
-        "url": {
-          "raw": "http://localhost:4000/users/auth/register",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "4000",
-          "path": ["users", "auth", "register"]
+        {
+          "name": "logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/users/auth/logout",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "4000",
+              "path": ["users", "auth", "logout"]
+            }
+          },
+          "response": []
         }
-      },
-      "response": []
-    },
-    {
-      "name": "logout",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "url": {
-          "raw": "http://localhost:4000/users/auth/logout",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "4000",
-          "path": ["users", "auth", "logout"]
-        }
-      },
-      "response": []
+      ]
     }
   ]
 }

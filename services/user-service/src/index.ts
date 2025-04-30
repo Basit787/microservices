@@ -14,7 +14,7 @@ const PORT = process.env.PORT as string;
 
 connectRabbitmq();
 
-app.use("/users", router);
+app.use("/api", router);
 
 app.listen(PORT, () => {
   console.log(`User-Service listening on port ${PORT}`);

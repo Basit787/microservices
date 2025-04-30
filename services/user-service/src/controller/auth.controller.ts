@@ -25,7 +25,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
       res.status(400).json({ message: "Password didnt matched" });
     }
 
-    const token = CreateToken({ id: isUser.id, email: isUser.email });
+    const token = CreateToken({ id: isUser.id, email: isUser.email, role: isUser.role ?? "user" });
 
     res.cookie("access_token", token, {
       httpOnly: true,
@@ -64,10 +64,6 @@ export const register = async (req: Request, res: Response): Promise<void> => {
 
 export const logout = async (req: Request, res: Response) => {
   try {
-    const token = req.cookies.access_token;
-    if (!token) {
-      res.status(400).json({ message: "User not login" });
-    }
     res.clearCookie("access_token", {
       httpOnly: true,
       sameSite: "strict",

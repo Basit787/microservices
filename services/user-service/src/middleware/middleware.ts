@@ -9,6 +9,7 @@ export const authMiddleware = async (req: Request, res: Response, next: NextFunc
       return;
     }
     const decodeToken = VerifyToken(token);
+
     if (!decodeToken) {
       res.status(401).json({ message: "Relogin again" });
       return;
@@ -17,4 +18,20 @@ export const authMiddleware = async (req: Request, res: Response, next: NextFunc
   } catch (error) {
     res.status(500).json({ message: "Failed while verifying user", error: error as Error });
   }
+};
+
+export const roleMiddleware = (allowedRoles: string[]) => {
+  return async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const token = req.cookies.access_token;
+      const user = VerifyToken(token);
+      if (!allowedRoles.includes(user.role)) {
+        res.status(403).json({ message: "Forbidden: Access denied" });
+        return;
+      }
+      next();
+    } catch (error) {
+      res.status(500).json({ message: "Failed while verifying role", error: error as Error });
+    }
+  };
 };

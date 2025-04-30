@@ -18,3 +18,19 @@ export const authMiddleware = async (req: Request, res: Response, next: NextFunc
     res.status(500).json({ message: "Failed while verifying user", error: error as Error });
   }
 };
+
+export const roleMiddleware = (role: string[]) => {
+  return async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const token = req.cookies.access_token;
+      const user = VerifyToken(token);
+      if (!role.includes(user.role)) {
+        res.status(403).json({ message: "Route Forbidden" });
+        return;
+      }
+      next();
+    } catch (error) {
+      res.status(500).json({ message: "Failed while verifying role", error: error as Error });
+    }
+  };
+};

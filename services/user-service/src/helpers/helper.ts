@@ -19,7 +19,7 @@ export const ComparePassword = async (userPassword: string, hashPassword: string
 };
 const SECRET_KEY = process.env.SECRET_KEY!;
 
-export const CreateToken = (payload: { id: number; email: string }) => {
+export const CreateToken = (payload: { id: string; email: string; role: string }) => {
   try {
     return jwt.sign(payload, SECRET_KEY, { expiresIn: "1h" });
   } catch (error) {
@@ -29,7 +29,8 @@ export const CreateToken = (payload: { id: number; email: string }) => {
 
 export const VerifyToken = (token: string) => {
   try {
-    return jwt.verify(token, SECRET_KEY);
+    const data = jwt.verify(token, SECRET_KEY);
+    return JSON.parse(JSON.stringify(data));
   } catch (error) {
     throw new Error("Failed to verify token", error as Error);
   }
