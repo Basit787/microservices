@@ -1,9 +1,10 @@
 import { Router } from "express";
 import * as auth from "../controller/auth.controller.js";
-import { authMiddleware } from "../middleware/middleware.js";
+import { authMiddleware, schemaMiddleware } from "../middleware/middleware.js";
+import { loginSchema, registerSchema } from "../zod/auth.schema.js";
 
 export const authRoutes = Router();
 
-authRoutes.post("/login", auth.login);
-authRoutes.post("/register", auth.register);
+authRoutes.post("/login", schemaMiddleware(loginSchema), auth.login);
+authRoutes.post("/register", schemaMiddleware(registerSchema), auth.register);
 authRoutes.post("/logout", authMiddleware, auth.logout);

@@ -4,7 +4,7 @@ import { db } from "../db/index.js";
 import { usersTable } from "../db/schema.js";
 import { HashedPassword, VerifyToken } from "../helpers/helper.js";
 
-export const getAllUsers = async (req: Request, res: Response): Promise<void> => {
+export const getAllUsers = async (req: Request, res: Response) => {
   try {
     const data = await db.select().from(usersTable);
     res.status(200).json({ message: "User data fetched successfully", data });
