@@ -1,7 +1,6 @@
 import "dotenv/config";
 import express from "express";
 import { router } from "./routes/product.routes.js";
-import connectRabbitmq from "./config/rabbitmq.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
@@ -12,7 +11,9 @@ app.use(cors());
 
 const PORT = process.env.PORT as string;
 
-connectRabbitmq();
+app.get("/", (req, res) => {
+  res.json({ message: "Hi from products" });
+});
 
 app.use("/product", router);
 

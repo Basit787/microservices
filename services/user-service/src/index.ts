@@ -1,6 +1,5 @@
 import "dotenv/config";
 import express from "express";
-import connectRabbitmq from "./config/rabbitmq.js";
 import { router } from "./routes/index.routes.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -19,7 +18,9 @@ app.use(
 
 const PORT = process.env.PORT as string;
 
-connectRabbitmq();
+app.get("/", (req, res) => {
+  res.json({ message: "Hi from users" });
+});
 
 app.use("/api", router);
 

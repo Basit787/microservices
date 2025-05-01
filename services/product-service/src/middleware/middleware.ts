@@ -25,7 +25,7 @@ export const roleMiddleware = (role: string[]) => {
       const token = req.cookies.access_token;
       const user = VerifyToken(token);
       if (!role.includes(user.role)) {
-        res.status(403).json({ message: "Route Forbidden" });
+        res.status(403).json({ message: "Forbidden: Access denied" });
         return;
       }
       next();

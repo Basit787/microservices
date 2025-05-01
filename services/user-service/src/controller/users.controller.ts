@@ -9,7 +9,7 @@ export const getAllUsers = async (req: Request, res: Response) => {
     const data = await db.select().from(usersTable);
     res.status(200).json({ message: "User data fetched successfully", data });
   } catch (error) {
-    res.status(500).json({ message: "Failed to get al users", error: error as Error });
+    res.status(500).json({ message: "Failed to get all users", error: error as Error });
   }
 };
 

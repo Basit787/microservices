@@ -10,20 +10,5 @@ services:
       - RABBITMQ_DEFAULT_PASS=pass
     volumes:
       - rabbitmq_data:/data
-
-  postgres:
-    image: postgres:15
-    container_name: postgres-db
-    restart: always
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: secretpass
-      POSTGRES_DB: postgres
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
 volumes:
   rabbitmq_data:
-  postgres_data:

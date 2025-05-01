@@ -3,7 +3,6 @@ import { Request, Response } from "express";
 import { db } from "../db/index.js";
 import { usersTable } from "../db/schema.js";
 import { ComparePassword, CreateToken, HashedPassword } from "../helpers/helper.js";
-import { SendQueue } from "../lib/rabbitmq.js";
 
 export const register = async (req: Request, res: Response) => {
   const { password, ...user } = req.body;
@@ -21,7 +20,6 @@ export const register = async (req: Request, res: Response) => {
       .values({ ...user, password: hashPassword })
       .returning();
 
-    await SendQueue("USER_QUEUE", user);
     res.status(201).json({ message: "User registered and event sent to queue", data });
   } catch (error) {
     res.status(500).json({ message: "Failed to add user", error: error as Error });
@@ -47,7 +45,6 @@ export const login = async (req: Request, res: Response) => {
       maxAge: 24 * 60 * 60 * 1000,
       secure: true,
     });
-    await SendQueue("USER_QUEUE", user);
     res.status(201).json({ message: "Login Successfull" });
   } catch (error) {
     res.status(500).json({ message: "Internal server error", error });
