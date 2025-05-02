@@ -39,22 +39,19 @@ export const singleUser = async (req: Request, res: Response) => {
 
 export const updateUser = async (req: Request, res: Response) => {
   const token = req.cookies.access_token;
-  const { name, age, email, password } = req.body;
+  const { password, ...user } = req.body;
 
   try {
     const verified = VerifyToken(token);
-    if (verified.email !== email) {
-      const data = await users.findUserByEmail(email);
+    if (verified.email !== user.email) {
+      const data = await users.findUserByEmail(user.email);
       if (data.length) {
         res.status(400).json({ message: "User already exists" });
         return;
       }
     }
     const hashPassword = await HashedPassword(password);
-    const data = await users.getUserUpdate(
-      { name, age, email, password: hashPassword },
-      verified.email,
-    );
+    const data = await users.getUserUpdate({ password: hashPassword, ...user }, verified.email);
     res.status(201).json({ message: "User Updated successfully", data });
   } catch (error) {
     res.status(500).json({ message: "Failed to update user", error: error as Error });

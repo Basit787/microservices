@@ -4,15 +4,15 @@ import { ComparePassword, HashedPassword } from "../lib/hash.js";
 import { CreateToken } from "../lib/jwt.js";
 
 export const register = async (req: Request, res: Response) => {
-  const { name, age, email, password } = req.body;
+  const { password, ...user } = req.body;
   try {
-    const verifiedEmail = await users.findUserByEmail(email);
+    const verifiedEmail = await users.findUserByEmail(user.email);
     if (verifiedEmail.length) {
       res.status(404).json({ message: "User already exists" });
       return;
     }
     const hashPassword = await HashedPassword(password);
-    const data = await users.registerUser({ name, age, email, password: hashPassword });
+    const data = await users.registerUser({ password: hashPassword, ...user });
     res.status(201).json({ message: "User registered and event sent to queue", data });
   } catch (error) {
     res.status(500).json({ message: "Failed to add user", error: error as Error });

@@ -11,8 +11,11 @@ router.post(
   schemaMiddleware(productSchema),
   product.createProduct,
 );
+
 router.get("/getAllProducts", product.getAllProducts);
+
 router.get("/getSingleProduct/:id", product.getProductById);
+
 router.delete(
   "/deleteProduct/:id",
   authMiddleware,

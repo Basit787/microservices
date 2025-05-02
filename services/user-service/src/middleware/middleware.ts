@@ -16,6 +16,7 @@ export const authMiddleware = async (req: Request, res: Response, next: NextFunc
       res.status(401).json({ message: "Relogin again" });
       return;
     }
+
     next();
   } catch (error) {
     res.status(500).json({ message: "Failed while verifying user", error: error as Error });

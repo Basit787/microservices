@@ -7,7 +7,14 @@ import { PORT } from "./lib/env.js";
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
+);
 
 app.all("/", (req, res) => {
   res.json({ message: "Hi from products" });

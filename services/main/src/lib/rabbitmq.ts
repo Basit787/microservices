@@ -1,9 +1,9 @@
 import amqplib, { Channel } from "amqplib";
-import "dotenv/config";
+import { RABBIT_MQ_URL } from "./env.js";
 
 export let channel: Channel;
 
-const url = process.env.RABBIT_MQ_URL as string;
+const url = RABBIT_MQ_URL! as string;
 
 export const ConnectionRabbitMq = async () => {
   try {
