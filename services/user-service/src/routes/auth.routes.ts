@@ -1,7 +1,7 @@
 import { Router } from "express";
 import * as auth from "../controller/auth.controller.js";
 import { authMiddleware, schemaMiddleware } from "../middleware/middleware.js";
-import { loginSchema, registerSchema } from "../zod/auth.schema.js";
+import { loginSchema, registerSchema } from "../lib/zod.js";
 
 export const authRoutes = Router();
 

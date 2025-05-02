@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
-import { ComparePassword, CreateToken, HashedPassword } from "../helpers/helper.js";
 import * as users from "../services/user.service.js";
+import { ComparePassword, HashedPassword } from "../lib/hash.js";
+import { CreateToken } from "../lib/jwt.js";
 
 export const register = async (req: Request, res: Response) => {
   const { name, age, email, password } = req.body;

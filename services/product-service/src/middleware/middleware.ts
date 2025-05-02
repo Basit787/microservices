@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import { VerifyToken } from "../helpers/helper.js";
+import { VerifyToken } from "../lib/jwt.js";
+import { z } from "zod";
 
 export const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   const token = req.cookies.access_token;
@@ -32,6 +33,18 @@ export const roleMiddleware = (role: string[]) => {
       next();
     } catch (error) {
       res.status(500).json({ message: "Failed while verifying role", error: error as Error });
+    }
+  };
+};
+
+export const schemaMiddleware = (schema: z.ZodSchema) => {
+  return async (req: Request, res: Response, next: NextFunction) => {
+    const userData = req.body;
+    try {
+      await schema.parse(userData);
+      next();
+    } catch (error) {
+      res.status(500).json({ message: "Failed while verifying schema", error: error as Error });
     }
   };
 };

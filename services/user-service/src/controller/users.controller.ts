@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
-import { HashedPassword, VerifyToken } from "../helpers/helper.js";
 import * as users from "../services/user.service.js";
+import { VerifyToken } from "../lib/jwt.js";
+import { HashedPassword } from "../lib/hash.js";
 
 export const allUsers = async (req: Request, res: Response) => {
   try {
