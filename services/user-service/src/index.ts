@@ -16,7 +16,7 @@ app.use(
   }),
 );
 
-app.get("/", (req, res) => {
+app.all("/", (req, res) => {
   res.json({ message: "Hi from users" });
 });
 
