@@ -3,12 +3,13 @@ import { VerifyToken } from "../helpers/helper.js";
 import { z } from "zod";
 
 export const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
+  const token = req.cookies.access_token;
+  if (!token) {
+    res.status(401).json({ message: "Login to continue..." });
+    return;
+  }
+
   try {
-    const token = req.cookies.access_token;
-    if (!token) {
-      res.status(401).json({ message: "Login to continue..." });
-      return;
-    }
     const decodeToken = await VerifyToken(token);
 
     if (!decodeToken) {

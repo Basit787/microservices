@@ -2,12 +2,13 @@ import { NextFunction, Request, Response } from "express";
 import { VerifyToken } from "../helpers/helper.js";
 
 export const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
+  const token = req.cookies.access_token;
+  if (!token) {
+    res.status(401).json({ message: "Login to continue..." });
+    return;
+  }
+
   try {
-    const token = req.cookies.access_token;
-    if (!token) {
-      res.status(401).json({ message: "Login to continue..." });
-      return;
-    }
     const decodeToken = VerifyToken(token);
     if (!decodeToken) {
       res.status(401).json({ message: "Relogin again" });
