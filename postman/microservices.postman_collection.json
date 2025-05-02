@@ -40,6 +40,53 @@
           "name": "getCurrentUser",
           "request": {
             "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4000/api/user/getCurrentUser",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "4000",
+              "path": ["api", "user", "getCurrentUser"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getSingleUser",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "updateUser",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"User 1\",\n    \"age\": 22,\n    \"email\":\"user10@gmail.com\",\n    \"password\": \"12345678\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:4000/api/user/updateUser",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "4000",
+              "path": ["api", "user", "updateUser"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "method": "GET",
             "header": []
           },
           "response": []
@@ -50,13 +97,13 @@
       "name": "product-service",
       "item": [
         {
-          "name": "Product-Service",
+          "name": "add-product",
           "request": {
             "method": "POST",
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"product\": \"Product 1\",\n  \"price\": \"$200\"\n}",
+              "raw": "{\n  \"name\": \"Product 1\",\n  \"description\":\"fgdfhgkjdfhgkfhk\",\n  \"price\": \"200\",\n  \"stock\":10\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -64,12 +111,69 @@
               }
             },
             "url": {
-              "raw": "http://localhost:5000/api/product",
+              "raw": "http://localhost:5000/product/add-product",
               "protocol": "http",
               "host": ["localhost"],
               "port": "5000",
-              "path": ["api", "product"]
+              "path": ["product", "add-product"]
             }
+          },
+          "response": []
+        },
+        {
+          "name": "getAllProducts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/product/getAllProducts",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["product", "getAllProducts"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getSingleProduct",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/product/getSingleProduct/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["product", "getSingleProduct", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "deleteProduct",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/product/deleteProduct/52609f89-60ae-48be-bc24-64c2239723f3",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": [
+                "product",
+                "deleteProduct",
+                "52609f89-60ae-48be-bc24-64c2239723f3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "method": "GET",
+            "header": []
           },
           "response": []
         }
@@ -85,7 +189,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"email\": \"user1@gmail.com\",\n    \"password\":\"12345678\"\n}",
+              "raw": "{\n    \"email\": \"user1@gmail.com\",\n    \"password\": \"12345678\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -93,11 +197,11 @@
               }
             },
             "url": {
-              "raw": "http://localhost:4000/users/auth/login",
+              "raw": "http://localhost:4000/api/auth/login",
               "protocol": "http",
               "host": ["localhost"],
               "port": "4000",
-              "path": ["users", "auth", "login"]
+              "path": ["api", "auth", "login"]
             }
           },
           "response": []
@@ -109,7 +213,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"name\": \"User 1\",\n    \"age\": 22,\n    \"email\": \"user1@gmail.com\"\n}",
+              "raw": "{\n    \"name\": \"User 1\",\n    \"age\": 22,\n    \"email\": \"user146@gmail.com\",\n    \"password\":\"12345678\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -117,11 +221,11 @@
               }
             },
             "url": {
-              "raw": "http://localhost:4000/users/auth/register",
+              "raw": "http://localhost:4000/api/auth/register",
               "protocol": "http",
               "host": ["localhost"],
               "port": "4000",
-              "path": ["users", "auth", "register"]
+              "path": ["api", "auth", "register"]
             }
           },
           "response": []
