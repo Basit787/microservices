@@ -2,7 +2,7 @@ import express from "express";
 import { router } from "./routes/index.routes.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import { PORT } from "./lib/env.js";
+import ENV from "./lib/env.js";
 
 const app = express();
 app.use(express.json());
@@ -22,6 +22,6 @@ app.all("/", (req, res) => {
 
 app.use("/api", router);
 
-app.listen(PORT, () => {
-  console.log(`User-Service listening on port ${PORT}`);
+app.listen(ENV.PORT, () => {
+  console.log(`User-Service listening on port ${ENV.PORT}`);
 });

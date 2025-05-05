@@ -1,3 +1,9 @@
 import "dotenv/config";
 
-export const { PORT, DATABASE_URL, SECRET_KEY } = process.env;
+const ENV = {
+  PORT: Number(process.env.PORT!) ?? 4000,
+  DATABASE_URL: (process.env.DATABASE_URL! as string) ?? "",
+  SECRET_KEY: (process.env.SECRET_KEY! as string) ?? "",
+} as const;
+
+export default ENV;

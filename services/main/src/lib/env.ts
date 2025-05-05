@@ -1,3 +1,7 @@
 import "dotenv/config";
 
-export const { PORT, RABBIT_MQ_URL } = process.env;
+const ENV = {
+  PORT: Number(process.env.PORT!) ?? 3000,
+  RABBIT_MQ_URL: (process.env.RABBIT_MQ_URL! as string) ?? "",
+};
+export default ENV;

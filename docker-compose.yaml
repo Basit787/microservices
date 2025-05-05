@@ -2,13 +2,43 @@ version: "3.8"
 services:
   rabbitmq:
     image: rabbitmq:3-management
+    container_name: rabbitmq-service
     ports:
       - 5672:5672
       - 15672:15672
     environment:
-      - RABBITMQ_DEFAULT_USER=user
-      - RABBITMQ_DEFAULT_PASS=pass
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: pass
     volumes:
-      - rabbitmq_data:/data
+      - rabbitmq_data:/var/lib/rabbitmq
+
+  users-db:
+    image: postgres:15
+    container_name: users-service-db
+    restart: always
+    environment:
+      POSTGRES_USER: users
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: users
+    ports:
+      - "5432:5432"
+    volumes:
+      - users_postgres_data:/var/lib/postgresql/data
+
+  products-db:
+    image: postgres:15
+    container_name: products-service-db
+    restart: always
+    environment:
+      POSTGRES_USER: product
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: product
+    ports:
+      - "5431:5432"
+    volumes:
+      - products_postgres_data:/var/lib/postgresql/data
+
 volumes:
   rabbitmq_data:
+  users_postgres_data:
+  products_postgres_data:
